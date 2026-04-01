@@ -1,2 +1,1 @@
-# web
-Pagina dedicada a la venta de juguetes inteligentes
+En Neuro Play creemos que jugar también es aprender. Por eso ofrecemos juegos seleccionados para acompañar el desarrollo de los chicos, estimular habilidades cognitivas y convertir el juego en una experiencia valiosa para toda la familia.
