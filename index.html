@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Neuro Play | Juguetes educativos</title>
+  <meta
+    content="Juguetes educativos para acompañar el desarrollo, la atención y el aprendizaje de los chicos."
+    name="description"
+  />
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --pink: #f8c8d8;
+      --pink-soft: #fff2f6;
+      --purple: #cfc7f7;
+      --purple-dark: #7768d8;
+      --blue: #d7ebff;
+      --blue-soft: #f2f8ff;
+      --green: #d8ecc3;
+      --green-soft: #f3faec;
+      --yellow: #ffe5a8;
+      --yellow-soft: #fff8e7;
+      --coral-soft: #fff0ea;
+      --text: #2f2f33;
+      --text-soft: #696972;
+      --shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+      --radius: 22px;
+      --radius-sm: 14px;
+      --container: 1120px;
+      --wa: #25d366;
+      --wa-dark: #1ea851;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+
+    body {
+      font-family: "Nunito", sans-serif;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.5;
+    }
+
+    body.chat-open { overflow: hidden; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    h1, h2, h3, .brand { font-family: "Fredoka", sans-serif; font-weight: 700; }
+
+    .container {
+      width: min(100% - 32px, var(--container));
+      margin: 0 auto;
+    }
+
+    .section { padding: 56px 0; }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.6rem, 4vw, 1.9rem);
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      color: var(--text-soft);
+      font-size: 0.98rem;
+      font-weight: 700;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: none;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 14px 22px;
+      font-size: 0.96rem;
+      font-weight: 800;
+      font-family: "Nunito", sans-serif;
+      transition: transform 0.2s ease, background 0.2s ease;
+      min-width: 200px;
+      width: 100%;
+      max-width: 280px;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: var(--purple-dark);
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover { background: #6758cb; }
+
+    .btn-wa {
+      background: var(--wa);
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-wa:hover { background: var(--wa-dark); }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid #f1edf8;
+    }
+
+    .nav-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .brand {
+      font-size: 1.4rem;
+      color: var(--purple-dark);
+      line-height: 1;
+    }
+
+    .brand span { color: #de7ca1; }
+
+    .site-nav { width: 100%; }
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      justify-content: center;
+    }
+
+    .menu a {
+      color: var(--text-soft);
+      font-size: 0.88rem;
+      font-weight: 800;
+      padding: 6px 4px;
+      white-space: nowrap;
+    }
+
+    .menu a:hover { color: var(--purple-dark); }
+
+    .title-products { color: #347ad3; }
+    .title-benefits { color: #de7ca1; }
+    .title-how { color: #6f9f3d; }
+    .title-contact { color: #d39b1c; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(
+        135deg,
+        var(--pink-soft) 0%,
+        #f8f2ff 38%,
+        var(--blue-soft) 70%,
+        var(--green-soft) 100%
+      );
+      padding: 54px 0 42px;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      width: 120px;
+      height: 120px;
+      background: var(--pink);
+      top: 24px;
+      left: -28px;
+    }
+
+    .hero::after {
+      width: 160px;
+      height: 160px;
+      background: var(--blue);
+      right: -52px;
+      bottom: 8px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--yellow);
+      color: #846200;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 0.84rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.85rem, 5vw, 3.25rem);
+      line-height: 1.1;
+      color: var(--purple-dark);
+      margin-bottom: 14px;
+    }
+
+    .hero h1 span { color: #de7ca1; }
+
+    .hero p {
+      color: var(--text-soft);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .trust-strip {
+      background: var(--yellow-soft);
+      border-top: 1px solid #f5edd0;
+      border-bottom: 1px solid #f5edd0;
+      padding: 16px 0;
+    }
+
+    .trust-items {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      text-align: center;
+    }
+
+    .trust-item {
+      font-size: 0.93rem;
+      font-weight: 800;
+      color: var(--text-soft);
+    }
+
+    .products { background: var(--blue-soft); }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .filter-btn {
+      border: 1px solid #d9e6f8;
+      background: #fff;
+      color: var(--text-soft);
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      font-family: "Nunito", sans-serif;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-height: 42px;
+    }
+
+    .filter-btn:hover {
+      transform: translateY(-1px);
+      border-color: var(--purple-dark);
+      color: var(--purple-dark);
+    }
+
+    .filter-btn.active {
+      background: var(--purple-dark);
+      color: #fff;
+      border-color: var(--purple-dark);
+      box-shadow: var(--shadow);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid #edf1f9;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.22s ease;
+    }
+
+    .product-card:hover { transform: translateY(-4px); }
+
+    .product-media {
+      height: 220px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f7f9fc;
+      padding: 16px;
+    }
+
+    .product-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .product-body {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .product-name {
+      font-size: 1.04rem;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+
+    .product-text {
+      color: var(--text-soft);
+      font-size: 0.93rem;
+      font-weight: 700;
+    }
+
+    .product-price {
+      font-family: "Fredoka", sans-serif;
+      font-size: 1.45rem;
+      color: var(--purple-dark);
+    }
+
+    .product-badge {
+      display: inline-block;
+      background: var(--green-soft);
+      color: #5e8a2e;
+      font-size: 0.78rem;
+      font-weight: 800;
+      border-radius: 999px;
+      padding: 5px 10px;
+      align-self: flex-start;
+    }
+
+    .product-btn {
+      margin-top: auto;
+      border: none;
+      background: var(--purple-dark);
+      color: #fff;
+      border-radius: var(--radius-sm);
+      padding: 13px 14px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      font-family: "Nunito", sans-serif;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      min-height: 44px;
+    }
+
+    .product-btn:hover { background: #6758cb; }
+
+    .empty-state {
+      text-align: center;
+      color: var(--text-soft);
+      font-weight: 800;
+      padding: 24px;
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .benefits { background: var(--pink-soft); }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .benefit-card {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+      padding: 22px 18px;
+    }
+
+    .benefit-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      user-select: none;
+    }
+
+    .benefit-card h3 {
+      font-size: 1.06rem;
+      color: var(--purple-dark);
+      margin-bottom: 8px;
+    }
+
+    .benefit-card p {
+      color: var(--text-soft);
+      font-size: 0.94rem;
+      font-weight: 700;
+    }
+
+    .how { background: var(--green-soft); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      list-style: none;
+    }
+
+    .step {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+      padding: 22px 18px;
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 12px;
+      color: #fff;
+      font-family: "Fredoka", sans-serif;
+      font-size: 1.2rem;
+    }
+
+    .s1 { background: #de7ca1; }
+    .s2 { background: var(--purple-dark); }
+    .s3 { background: #e5ab2d; }
+    .s4 { background: #6f9f3d; }
+
+    .step h3 {
+      font-size: 1.04rem;
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      color: var(--text-soft);
+      font-size: 0.94rem;
+      font-weight: 700;
+    }
+
+    .contact { background: var(--yellow-soft); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .contact-card {
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+      padding: 22px 18px;
+    }
+
+    .contact-icon {
+      font-size: 2rem;
+      margin-bottom: 8px;
+      user-select: none;
+    }
+
+    .contact-card h3 {
+      color: var(--purple-dark);
+      font-size: 1.04rem;
+      margin-bottom: 6px;
+    }
+
+    .contact-card p {
+      color: var(--text-soft);
+      font-size: 0.94rem;
+      font-weight: 700;
+    }
+
+    .contact-card a {
+      color: #347ad3;
+      font-size: 0.94rem;
+      font-weight: 700;
+    }
+
+    footer {
+      background: var(--purple-dark);
+      color: #fff;
+      text-align: center;
+      padding: 34px 0;
+    }
+
+    .footer-brand {
+      font-family: "Fredoka", sans-serif;
+      font-weight: 700;
+      font-size: 1.45rem;
+      color: #fff;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .footer-brand span { color: #ffc3d8; }
+
+    footer p {
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-top: 4px;
+      opacity: 0.96;
+    }
+
+    .chat-toggle {
+      position: fixed;
+      right: 18px;
+      bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+      width: 54px;
+      height: 54px;
+      border: none;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--purple-dark);
+      color: #fff;
+      font-size: 22px;
+      cursor: pointer;
+      z-index: 999;
+      box-shadow: 0 10px 26px rgba(119, 104, 216, 0.35);
+    }
+
+    .chat-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(47, 47, 51, 0.28);
+      z-index: 998;
+      display: none;
+    }
+
+    .chat-overlay.open { display: block; }
+
+    .chat-window {
+      position: fixed;
+      right: 16px;
+      bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+      width: calc(100vw - 32px);
+      max-width: 340px;
+      max-height: calc(100svh - 110px);
+      background: #fff;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.16);
+      border: 1px solid #ede8ff;
+      display: none;
+      flex-direction: column;
+      z-index: 999;
+    }
+
+    .chat-window.open { display: flex; }
+
+    .chat-header {
+      background: var(--purple-dark);
+      color: #fff;
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .chat-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--pink);
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .chat-header h4 {
+      font-size: 1rem;
+      line-height: 1.1;
+    }
+
+    .chat-close {
+      margin-left: auto;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: 800;
+      padding: 4px 6px;
+      min-width: 32px;
+      min-height: 32px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      color: #fff;
+      font-family: "Nunito", sans-serif;
+    }
+
+    .chat-close:hover { background: rgba(255, 255, 255, 0.15); }
+
+    .chat-messages {
+      overflow-y: auto;
+      flex: 1;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: #fff;
+    }
+
+    .msg {
+      max-width: 86%;
+      padding: 10px 12px;
+      border-radius: 14px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .msg.bot {
+      align-self: flex-start;
+      background: #f3efff;
+      color: #5c50b7;
+      border-bottom-left-radius: 6px;
+    }
+
+    .msg.user {
+      align-self: flex-end;
+      background: var(--purple-dark);
+      color: #fff;
+      border-bottom-right-radius: 6px;
+    }
+
+    .chat-options {
+      padding: 12px;
+      display: grid;
+      gap: 8px;
+      border-top: 1px solid #f1edff;
+      background: #fff;
+      flex-shrink: 0;
+    }
+
+    .chat-option {
+      border: none;
+      border-radius: 999px;
+      padding: 10px 12px;
+      background: #f3efff;
+      color: #5c50b7;
+      text-align: left;
+      font-size: 0.85rem;
+      font-weight: 800;
+      font-family: "Nunito", sans-serif;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      min-height: 44px;
+    }
+
+    .chat-option:hover { background: #e8e1ff; }
+
+    @media (min-width: 700px) {
+      .nav-inner { flex-direction: row; align-items: center; }
+      .site-nav { width: auto; }
+      .menu { justify-content: flex-end; }
+      .hero { padding: 84px 0 66px; }
+      .hero p { font-size: 1.08rem; }
+      .hero-actions { flex-direction: row; justify-content: center; }
+      .btn { width: auto; }
+      .trust-items { grid-template-columns: repeat(3, 1fr); }
+      .products-grid, .benefits-grid, .steps, .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 699px) {
+      .nav { position: sticky; }
+      .menu a { font-size: 0.84rem; }
+      .chat-window { right: 12px; left: 12px; width: auto; max-width: none; }
+      .chat-toggle { right: 14px; }
+    }
+
+    @media (min-width: 980px) {
+      .products-grid { grid-template-columns: repeat(3, 1fr); }
+      .benefits-grid { grid-template-columns: repeat(4, 1fr); }
+      .steps { grid-template-columns: repeat(4, 1fr); }
+      .contact-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="logo">
+        <img
+          alt="Neuro Play logo"
+          decoding="async"
+          src="image/logo-neuro-play.png"
+          style="width:42px;height:42px;object-fit:contain;flex-shrink:0;"
+        />
+        <div class="brand">Neuro <span>Play</span></div>
+      </div>
+      <nav aria-label="Menú principal" class="site-nav">
+        <ul class="menu">
+          <li><a href="#productos">Productos</a></li>
+          <li><a href="#beneficios">¿Por qué elegirnos?</a></li>
+          <li><a href="#como-comprar">¿Cómo comprar?</a></li>
+          <li><a href="https://aprendeconmente.github.io/web/">Aprende con Mente</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">🌈 Activá tu mente jugando</div>
+        <h1>Jugar también <span>es aprender</span></h1>
+        <p>
+          En Neuro Play seleccionamos juguetes que potencian habilidades cognitivas,
+          atención y aprendizaje significativo.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#productos">🎁 Ver productos</a>
+          <a
+            class="btn btn-wa"
+            href="https://wa.me/1127325400?text=Hola%2C%20estoy%20buscando%20un%20juego.%20Me%20gustar%C3%ADa%20trabajar%20atenci%C3%B3n%2C%20memoria%2C%20alfabetizaci%C3%B3n%20o%20lenguaje.%20%C2%BFMe%20pod%C3%A9s%20ayudar%3F"
+            rel="noopener noreferrer"
+            target="_blank"
+          >💬 Hablar por WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust-strip">
+    <div class="container">
+      <ul class="trust-items">
+        <li class="trust-item">✅ Atención personalizada por WhatsApp</li>
+        <li class="trust-item">✅ Compra simple, sin carrito ni vueltas</li>
+        <li class="trust-item">✅ Retiro coordinado con asesoramiento</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="section products" id="productos">
+    <div class="container">
+      <div class="section-title">
+        <h2 class="title-products">Nuestros juguetes</h2>
+        <p>
+          Una selección de juguetes que combinan aprendizaje, juego y desarrollo real.
+        </p>
+      </div>
+
+      <div class="filters" id="filters">
+        <button class="filter-btn active" type="button" data-filter="todos">Todos</button>
+        <button class="filter-btn" type="button" data-filter="memoria">Memoria</button>
+        <button class="filter-btn" type="button" data-filter="atencion">Atención</button>
+        <button class="filter-btn" type="button" data-filter="lenguaje">Lenguaje</button>
+        <button class="filter-btn" type="button" data-filter="motricidad">Motricidad</button>
+        <button class="filter-btn" type="button" data-filter="logica">Lógica</button>
+      </div>
+
+      <p id="resultsInfo" style="text-align:center; color:#696972; font-weight:800; margin-bottom:18px;"></p>
+
+      <div class="products-grid" id="productsGrid"></div>
+    </div>
+  </section>
+
+  <section class="section benefits" id="beneficios">
+    <div class="container">
+      <div class="section-title">
+        <h2 class="title-benefits">¿Por qué elegir Neuro Play?</h2>
+        <p>
+          Una experiencia simple, confiable y con base en el desarrollo, para familias
+          que buscan algo más que un juguete. Propuestas que estimulan, acompañan y
+          tienen sentido.
+        </p>
+      </div>
+      <div class="benefits-grid">
+        <article class="benefit-card">
+          <div aria-hidden="true" class="benefit-icon">🧠</div>
+          <h3>Selección con propósito</h3>
+          <p>
+            Seleccionamos propuestas que acompañan y estimulan funciones cognitivas
+            esenciales: memoria, atención, coordinación y creatividad.
+          </p>
+        </article>
+        <article class="benefit-card">
+          <div aria-hidden="true" class="benefit-icon">💬</div>
+          <h3>Atención personalizada</h3>
+          <p>
+            Te asesoramos por WhatsApp para que puedas elegir con confianza, según las
+            necesidades de cada niño.
+          </p>
+        </article>
+        <article class="benefit-card">
+          <div aria-hidden="true" class="benefit-icon">✨</div>
+          <h3>Compra ágil y sin vueltas</h3>
+          <p>
+            Olvidate de los procesos largos: nos escribís por WhatsApp y coordinamos
+            todo de forma rápida.
+          </p>
+        </article>
+        <article class="benefit-card">
+          <div aria-hidden="true" class="benefit-icon">🎁</div>
+          <h3>Regalos con valor</h3>
+          <p>
+            Productos atractivos y cuidadosamente seleccionados para que el juego no
+            solo divierta, sino que también aporte al desarrollo.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section how" id="como-comprar">
+    <div class="container">
+      <div class="section-title">
+        <h2 class="title-how">Cómo comprar</h2>
+        <p>El proceso es simple y totalmente asistido por WhatsApp.</p>
+      </div>
+      <ul class="steps">
+        <li class="step">
+          <div aria-hidden="true" class="step-number s1">1</div>
+          <h3>Elegí el juguete</h3>
+          <p>Mirá los productos y seleccioná el que más te interese.</p>
+        </li>
+        <li class="step">
+          <div aria-hidden="true" class="step-number s2">2</div>
+          <h3>Escribinos</h3>
+          <p>Tocá el botón de WhatsApp del producto y enviá tu consulta.</p>
+        </li>
+        <li class="step">
+          <div aria-hidden="true" class="step-number s3">3</div>
+          <h3>Te asesoramos</h3>
+          <p>Confirmamos disponibilidad, medios de pago y resolvemos tus dudas.</p>
+        </li>
+        <li class="step">
+          <div aria-hidden="true" class="step-number s4">4</div>
+          <h3>Coordinamos entrega</h3>
+          <p>Una vez confirmado, coordinamos retiro o entrega según corresponda.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section contact" id="contacto">
+    <div class="container">
+      <div class="section-title">
+        <h2 class="title-contact">Contacto</h2>
+        <p>
+          No se trata solo de elegir un juguete, sino de elegir propuestas que
+          acompañen el desarrollo.
+        </p>
+      </div>
+      <div class="contact-grid">
+        <article class="contact-card">
+          <div aria-hidden="true" class="contact-icon">💬</div>
+          <h3>WhatsApp</h3>
+          <p>
+            <a
+              href="https://wa.me/1127325400?text=Hola%2C%20estoy%20buscando%20un%20juego.%20Me%20gustar%C3%ADa%20trabajar%20atenci%C3%B3n%2C%20memoria%2C%20alfabetizaci%C3%B3n%20o%20lenguaje.%20%C2%BFMe%20pod%C3%A9s%20ayudar%3F"
+              rel="noopener noreferrer"
+              target="_blank"
+            >11 2732-5400</a>
+          </p>
+        </article>
+        <article class="contact-card">
+          <div aria-hidden="true" class="contact-icon">📧</div>
+          <h3>Email</h3>
+          <p><a href="mailto:neuroplay.ar@gmail.com">neuroplay.ar@gmail.com</a></p>
+        </article>
+        <article class="contact-card">
+          <div aria-hidden="true" class="contact-icon">📍</div>
+          <h3>Ubicación</h3>
+          <p>Villa Maipú, San Martín<br />Buenos Aires, Argentina</p>
+        </article>
+        <article class="contact-card">
+          <div aria-hidden="true" class="contact-icon">💳</div>
+          <h3>Formas de pago</h3>
+          <p>Transferencia bancaria, Mercado Pago o efectivo</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p class="footer-brand">Neuro <span>Play</span></p>
+      <p>Propuestas educativas que acompañan el aprendizaje desde el juego, con calidez y cercanía.</p>
+      <p>Villa Maipú, San Martín - Buenos Aires</p>
+      <p>neuroplay.ar@gmail.com - 11 2732-5400</p>
+    </div>
+  </footer>
+
+  <button
+    aria-controls="chatWindow"
+    aria-expanded="false"
+    aria-haspopup="dialog"
+    aria-label="Abrir chat"
+    class="chat-toggle"
+    id="chatToggleBtn"
+    onclick="toggleChat()"
+    type="button"
+  >🤖</button>
+
+  <div class="chat-overlay" hidden="" id="chatOverlay"></div>
+
+  <div
+    aria-hidden="true"
+    aria-label="Chat Neuro Play"
+    aria-modal="true"
+    class="chat-window"
+    id="chatWindow"
+    role="dialog"
+    tabindex="-1"
+  >
+    <div class="chat-header">
+      <div aria-hidden="true" class="chat-avatar">🌈</div>
+      <div><h4>Neuro Play Bot</h4></div>
+      <button aria-label="Cerrar chat" class="chat-close" onclick="toggleChat()" type="button">✕</button>
+    </div>
+
+    <div aria-live="polite" class="chat-messages" id="chatMessages">
+      <div class="msg bot">¡Hola! Somos el equipo de Neuro Play.</div>
+      <div class="msg bot">
+        Puedo ayudarte con productos, pagos, retiro y derivarte a WhatsApp para
+        atención personalizada.
+      </div>
+    </div>
+
+    <div class="chat-options">
+      <button class="chat-option" onclick="botResponder('productos')" type="button">🎁 Quiero ver productos</button>
+      <button class="chat-option" onclick="botResponder('pago')" type="button">💳 ¿Cómo se paga?</button>
+      <button class="chat-option" onclick="botResponder('retiro')" type="button">📍 ¿Cómo es el retiro?</button>
+      <button class="chat-option" onclick="botResponder('ayuda')" type="button">💬 Quiero hablar por WhatsApp</button>
+    </div>
+  </div>
+
+  <script>
+    var WA = "5491127325400";
+    var activeFilter = "todos";
+
+    var productos = [
+      {
+        producto: "Penguin Trap",
+        descripcion: "Juego de equilibrio y precisión",
+        beneficio: "Favorece la atención sostenida y el control de impulsos.",
+        habilidades: "Motricidad fina, atención",
+        edad: "4+",
+        precio: 15900,
+        image: "JYF-penguin-trap.webp",
+        slug: "penguin-trap",
+        badge: "🎯 Atención",
+        categorias: ["atencion", "motricidad"]
+      },
+      {
+        producto: "Happy Astronauts",
+        descripcion: "Juego de equilibrio divertido",
+        beneficio: "Estimula coordinación y planificación.",
+        habilidades: "Coordinación, planificación",
+        edad: "4+",
+        precio: 16900,
+        image: "JYF-Happy-Astronauts.webp",
+        slug: "happy-astronauts",
+        badge: "🚀 Coordinación",
+        categorias: ["motricidad"]
+      },
+      {
+        producto: "Laberinto bolitas",
+        descripcion: "Juego de recorrido y lógica",
+        beneficio: "Desarrolla resolución de problemas.",
+        habilidades: "Lógica, paciencia",
+        edad: "5+",
+        precio: 14900,
+        image: "JYF-Laberinto-bolitas-50-pcs.webp",
+        slug: "laberinto-bolitas-50-pcs",
+        badge: "🧠 Lógica",
+        categorias: ["logica", "motricidad"]
+      },
+      {
+        producto: "Memory Game Pocket",
+        descripcion: "Juego de memoria portátil",
+        beneficio: "Fortalece memoria y concentración.",
+        habilidades: "Memoria, atención",
+        edad: "4+",
+        precio: 11900,
+        image: "JYF-Memory-Game-Pocket.webp",
+        slug: "memory-game-pocket",
+        badge: "🧩 Memoria",
+        categorias: ["memoria", "atencion"]
+      },
+      {
+        producto: "Bounce Biscuit",
+        descripcion: "Juego de precisión",
+        beneficio: "Trabaja control inhibitorio.",
+        habilidades: "Coordinación, control",
+        edad: "4+",
+        precio: 11000,
+        image: "JYF-Bounce-Biscuit-Sticks.webp",
+        slug: "bounce-biscuit-sticks",
+        badge: "🎯 Precisión",
+        categorias: ["motricidad", "atencion"]
+      },
+      {
+        producto: "Balls Draw Lots",
+        descripcion: "Juego de azar y estrategia",
+        beneficio: "Favorece la toma de decisiones.",
+        habilidades: "Estrategia, atención",
+        edad: "4+",
+        precio: 7900,
+        image: "JYF-Balls-Draw-Lots.webp",
+        slug: "balls-draw-lots",
+        badge: "🎲 Estrategia",
+        categorias: ["atencion", "logica"]
+      },
+      {
+        producto: "Martillo sapo",
+        descripcion: "Juego motriz interactivo",
+        beneficio: "Estimula la coordinación viso-motora.",
+        habilidades: "Motricidad, reflejos",
+        edad: "3+",
+        precio: 25000,
+        image: "JYF-Juego-martillo-sapo.webp",
+        slug: "juego-martillo-sapo",
+        badge: "🐸 Motricidad",
+        categorias: ["motricidad"]
+      },
+      {
+        producto: "Letras Implas",
+        descripcion: "Juego de alfabetización",
+        beneficio: "Apoya la lectura inicial.",
+        habilidades: "Lenguaje, lectoescritura",
+        edad: "5+",
+        precio: 19900,
+        image: "IMPLAS-jugando-con-letras.webp",
+        slug: "jugando-con-letras-implas",
+        badge: "📚 Lectoescritura",
+        categorias: ["lenguaje"]
+      },
+      {
+        producto: "Casita robada",
+        descripcion: "Juego de cartas",
+        beneficio: "Favorece memoria y estrategia.",
+        habilidades: "Memoria, planificación",
+        edad: "4+",
+        precio: 4900,
+        image: "BONTUS-Casita-robada.webp",
+        slug: "casita-robada",
+        badge: "🏠 Memoria",
+        categorias: ["memoria", "logica"]
+      },
+      {
+        producto: "Animales escondidos",
+        descripcion: "Juego de observación",
+        beneficio: "Estimula la atención visual.",
+        habilidades: "Atención, percepción",
+        edad: "4+",
+        precio: 4900,
+        image: "BONTUS-Animales-escondidos.webp",
+        slug: "animales-escondidos",
+        badge: "🦒 Observación",
+        categorias: ["atencion"]
+      },
+      {
+        producto: "Barco pirata",
+        descripcion: "Juego de equilibrio",
+        beneficio: "Desarrolla tolerancia a la frustración.",
+        habilidades: "Equilibrio, paciencia",
+        edad: "4+",
+        precio: 19900,
+        image: "JYF-Barco-pirata.webp",
+        slug: "barco-pirata",
+        badge: "🏴‍☠️ Equilibrio",
+        categorias: ["motricidad"]
+      },
+      {
+        producto: "Who is it",
+        descripcion: "Juego de preguntas",
+        beneficio: "Estimula lenguaje y deducción.",
+        habilidades: "Lenguaje, lógica",
+        edad: "5+",
+        precio: 14900,
+        image: "JYF-Who-is-it.webp",
+        slug: "who-is-it",
+        badge: "💬 Lenguaje",
+        categorias: ["lenguaje", "logica"]
+      },
+      {
+        producto: "Dinosaur Game",
+        descripcion: "Juego de acción",
+        beneficio: "Favorece coordinación y reflejos.",
+        habilidades: "Motricidad, reflejos",
+        edad: "3+",
+        precio: 15900,
+        image: "JYF-Dinosaur-Game.webp",
+        slug: "dinosaur-game",
+        badge: "🦖 Reflejos",
+        categorias: ["motricidad"]
+      }
+    ];
+
+    var etiquetas = {
+      productos: "Quiero ver productos",
+      pago: "¿Cómo se paga?",
+      retiro: "¿Cómo es el retiro?",
+      ayuda: "Quiero hablar por WhatsApp"
+    };
+
+    var chat = document.getElementById("chatWindow");
+    var chatBtn = document.getElementById("chatToggleBtn");
+    var chatOverlay = document.getElementById("chatOverlay");
+    var lastFocusedElement = null;
+
+    function formatPrice(price) {
+      return "$" + price.toLocaleString("es-AR");
+    }
+
+    function abrirWhatsApp(msg) {
+      window.open(
+        "https://wa.me/" + WA + "?text=" + encodeURIComponent(msg),
+        "_blank",
+        "noopener,noreferrer"
+      );
+    }
+
+    function consultarProducto(nombre) {
+      abrirWhatsApp("Hola, quiero consultar por " + nombre);
+    }
+
+    function getProductosFiltrados() {
+      if (activeFilter === "todos") return productos;
+      return productos.filter(function(producto) {
+        return producto.categorias.includes(activeFilter);
+      });
+    }
+
+    function updateResultsInfo(cantidad) {
+      var resultsInfo = document.getElementById("resultsInfo");
+      if (!resultsInfo) return;
+
+      var nombresFiltros = {
+        todos: "todos los productos",
+        memoria: "memoria",
+        atencion: "atención",
+        lenguaje: "lenguaje",
+        motricidad: "motricidad",
+        logica: "lógica"
+      };
+
+      if (activeFilter === "todos") {
+        resultsInfo.textContent = "Mostrando " + cantidad + " productos";
+      } else {
+        resultsInfo.textContent = "Mostrando " + cantidad + " productos de " + nombresFiltros[activeFilter];
+      }
+    }
+
+    function renderProductos() {
+      var grid = document.getElementById("productsGrid");
+      if (!grid) return;
+
+      var productosFiltrados = getProductosFiltrados();
+      updateResultsInfo(productosFiltrados.length);
+
+      if (!productosFiltrados.length) {
+        grid.innerHTML = '<div class="empty-state">No encontramos productos para este filtro por ahora.</div>';
+        return;
+      }
+
+      grid.innerHTML = productosFiltrados.map(function(producto) {
+        return `
+          <article class="product-card">
+            <div class="product-media">
+              <img
+                src="image/${producto.image}"
+                alt="${producto.producto}"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="product-body">
+              <h3 class="product-name">${producto.producto}</h3>
+              <p class="product-text"><strong>${producto.descripcion}.</strong> ${producto.beneficio}</p>
+              <p class="product-text"><strong>Habilidades:</strong> ${producto.habilidades}</p>
+              <p class="product-text"><strong>Edad recomendada:</strong> ${producto.edad}</p>
+              <div class="product-price">${formatPrice(producto.precio)}</div>
+              <span class="product-badge">${producto.badge}</span>
+              <button
+                aria-label="Consultar por WhatsApp por ${producto.producto}"
+                class="product-btn"
+                type="button"
+                onclick="consultarProducto('${producto.producto.replace(/'/g, "\\'")}')"
+              >
+                Consultar por WhatsApp
+              </button>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function scrollToProductsGrid() {
+      var productsSection = document.getElementById("productos");
+      if (!productsSection) return;
+
+      productsSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+
+    function initFilters() {
+      var buttons = document.querySelectorAll(".filter-btn");
+
+      buttons.forEach(function(button) {
+        button.addEventListener("click", function() {
+          activeFilter = button.getAttribute("data-filter");
+
+          buttons.forEach(function(btn) {
+            btn.classList.remove("active");
+          });
+
+          button.classList.add("active");
+          renderProductos();
+          scrollToProductsGrid();
+        });
+      });
+    }
+
+    function getFocusableElements() {
+      return chat.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+    }
+
+    function closeChat() {
+      chat.classList.remove("open");
+      chatOverlay.classList.remove("open");
+      chatOverlay.hidden = true;
+      chat.setAttribute("aria-hidden", "true");
+      chatBtn.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("chat-open");
+      if (lastFocusedElement) lastFocusedElement.focus();
+    }
+
+    function openChat() {
+      lastFocusedElement = document.activeElement;
+      chat.classList.add("open");
+      chatOverlay.hidden = false;
+      chatOverlay.classList.add("open");
+      chat.setAttribute("aria-hidden", "false");
+      chatBtn.setAttribute("aria-expanded", "true");
+      document.body.classList.add("chat-open");
+
+      var focusables = getFocusableElements();
+      if (focusables.length) {
+        focusables[0].focus();
+      } else {
+        chat.focus();
+      }
+    }
+
+    function toggleChat() {
+      if (chat.classList.contains("open")) {
+        closeChat();
+      } else {
+        openChat();
+      }
+    }
+
+    chatOverlay.addEventListener("click", closeChat);
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape" && chat.classList.contains("open")) {
+        closeChat();
+      }
+
+      if (event.key === "Tab" && chat.classList.contains("open")) {
+        var focusables = Array.prototype.slice.call(getFocusableElements());
+        if (!focusables.length) return;
+
+        var first = focusables[0];
+        var last = focusables[focusables.length - 1];
+
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+    });
+
+    function agregarMensaje(texto, tipo, esHTML) {
+      var c = document.getElementById("chatMessages");
+      var d = document.createElement("div");
+      d.className = "msg " + (tipo || "bot");
+
+      if (esHTML) {
+        d.innerHTML = texto;
+      } else {
+        d.textContent = texto;
+      }
+
+      c.appendChild(d);
+      c.scrollTop = c.scrollHeight;
+    }
+
+    function linkWA(msg, label) {
+      var url = "https://wa.me/" + WA + "?text=" + encodeURIComponent(msg);
+      return '<a href="' + url + '" target="_blank" rel="noopener noreferrer" style="color:#5c50b7;font-weight:800;">' + label + '</a>';
+    }
+
+    function botResponder(tipo) {
+      if (!etiquetas[tipo]) return;
+
+      agregarMensaje(etiquetas[tipo], "user");
+
+      setTimeout(function() {
+        if (tipo === "productos") {
+          agregarMensaje("Podés recorrer la sección de productos y usar los filtros para encontrar lo que necesitás.");
+        }
+
+        if (tipo === "pago") {
+          agregarMensaje("Aceptamos transferencia bancaria, Mercado Pago y efectivo.");
+          agregarMensaje(
+            linkWA("Hola, quiero consultar por medios de pago", "No dudes en consultar."),
+            "bot",
+            true
+          );
+        }
+
+        if (tipo === "retiro") {
+          agregarMensaje("El retiro se coordina en Villa Maipú, San Martín, una vez confirmada la compra.");
+          agregarMensaje(
+            linkWA("Hola, quiero consultar por retiro o entrega", "La coordinación se realiza por WhatsApp de forma inmediata."),
+            "bot",
+            true
+          );
+        }
+
+        if (tipo === "ayuda") {
+          agregarMensaje("Perfecto. Te derivo a WhatsApp para atención directa.");
+          agregarMensaje(
+            linkWA(
+              "Hola, estoy buscando un juego y me gustaría trabajar atención, memoria, lectura o conducta. ¿Me podés asesorar?",
+              "Abrir WhatsApp"
+            ),
+            "bot",
+            true
+          );
+        }
+      }, 400);
+    }
+
+    initFilters();
+    renderProductos();
+  </script>
+</body>
+</html>
