@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Neuro Play | Productos con sentido para el aprendizaje</title>
+  <meta
+    name="description"
+    content="Productos con sentido para acompañar atención, memoria, lenguaje y desarrollo, con asesoramiento personalizado para cada familia."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Neuro Play | Productos con sentido para el aprendizaje" />
+  <meta
+    property="og:description"
+    content="Juegos y propuestas seleccionadas para acompañar el desarrollo y el aprendizaje con criterio."
+  />
+  <meta property="og:url" content="https://neuroplayar.github.io/web/" />
+  <meta property="og:image" content="https://neuroplayar.github.io/web/image/logo-neuro-play.png" />
+  <meta property="og:locale" content="es_AR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Neuro Play | Productos con sentido para el aprendizaje" />
+  <meta
+    name="twitter:description"
+    content="Juegos y propuestas seleccionadas para acompañar el desarrollo y el aprendizaje con criterio."
+  />
+  <meta name="twitter:image" content="https://neuroplayar.github.io/web/image/logo-neuro-play.png" />
+  <link rel="canonical" href="https://neuroplayar.github.io/web/" />
+  <link rel="icon" type="image/png" href="image/logo-neuro-play.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" crossorigin href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #faf7f2;
+      --surface: rgba(255, 255, 255, 0.88);
+      --surface-strong: rgba(255, 255, 255, 0.96);
+      --line: rgba(62, 51, 44, 0.08);
+      --text: #2b241f;
+      --text-soft: #6f665f;
+      --accent: #c96f4e;
+      --accent-dark: #ad5a3c;
+      --forest: #4f7561;
+      --wa: #25d366;
+      --wa-dark: #1ea851;
+      --shadow: 0 12px 34px rgba(59, 43, 31, 0.08);
+      --radius: 22px;
+      --container: 1120px;
+      --anchor-offset: 88px;
+      --focus-ring: 0 0 0 3px rgba(201, 111, 78, 0.22);
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: var(--anchor-offset); }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      font-family: "Manrope", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(201, 111, 78, 0.05), transparent 20%),
+        radial-gradient(circle at top right, rgba(79, 117, 97, 0.05), transparent 22%),
+        linear-gradient(180deg, #fffdfb 0%, var(--bg) 100%);
+      line-height: 1.5;
+    }
+
+    body.chat-open { overflow: hidden; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    h1, h2, h3, .brand {
+      font-family: "Space Grotesk", sans-serif;
+      letter-spacing: -0.03em;
+    }
+
+    :where(a, button, [role="button"], input, select, textarea):focus-visible {
+      outline: none;
+      box-shadow: var(--focus-ring);
+    }
+
+    .container {
+      width: min(100% - 28px, var(--container));
+      margin: 0 auto;
+    }
+
+    .glass {
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.55);
+      box-shadow: var(--shadow);
+    }
+
+    .section {
+      padding: 48px 0;
+      scroll-margin-top: var(--anchor-offset);
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 22px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.6rem, 5vw, 2.3rem);
+      margin-bottom: 8px;
+    }
+
+    .section-head p {
+      color: var(--text-soft);
+      font-size: 0.98rem;
+      font-weight: 500;
+    }
+
+    .nav-shell {
+      position: sticky;
+      top: 10px;
+      z-index: 1000;
+      padding-top: 10px;
+    }
+
+    .nav {
+      border-radius: 999px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.75);
+      padding: 4px;
+    }
+
+    .brand {
+      font-size: 1.15rem;
+      line-height: 1;
+    }
+
+    .brand span { color: var(--accent); }
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .menu a {
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: var(--text-soft);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .menu a:hover {
+      background: rgba(255,255,255,0.8);
+      color: var(--text);
+    }
+
+    .menu-cta {
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), #de8662);
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .hero {
+      padding: 28px 0 36px;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .hero-panel,
+    .hero-side {
+      border-radius: 26px;
+      padding: 22px 18px;
+    }
+
+    .hero-panel {
+      background:
+        linear-gradient(160deg, rgba(255,255,255,0.92), rgba(255,255,255,0.72)),
+        linear-gradient(135deg, rgba(201,111,78,0.07), rgba(79,117,97,0.07));
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(201,111,78,0.12);
+      color: var(--accent-dark);
+      font-size: 0.78rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(2rem, 8vw, 4rem);
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+
+    .hero-copy h1 span {
+      color: var(--accent);
+      display: block;
+    }
+
+    .hero-copy p {
+      color: var(--text-soft);
+      font-size: 0.98rem;
+      max-width: 620px;
+      margin-bottom: 18px;
+    }
+
+    .hero-points {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .hero-points li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(62,51,44,0.05);
+      color: var(--text);
+      font-size: 0.93rem;
+      font-weight: 700;
+    }
+
+    .hero-points span {
+      flex: 0 0 24px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(201,111,78,0.12);
+      color: var(--accent-dark);
+      font-size: 0.78rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-family: "Manrope", sans-serif;
+      font-size: 0.94rem;
+      font-weight: 800;
+      width: 100%;
+      max-width: 280px;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.95);
+      color: var(--text);
+      border: 1px solid rgba(62,51,44,0.08);
+    }
+
+    .btn-wa {
+      background: var(--wa);
+      color: #fff;
+    }
+
+    .btn-wa:hover { background: var(--wa-dark); }
+
+    .hero-side {
+      background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(255,255,255,0.78));
+      display: grid;
+      gap: 14px;
+    }
+
+    .hero-card-title {
+      font-size: 1.05rem;
+      margin-bottom: 4px;
+    }
+
+    .hero-card-copy {
+      color: var(--text-soft);
+      font-size: 0.92rem;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .metric {
+      padding: 14px;
+      border-radius: 16px;
+      background: var(--surface-strong);
+      border: 1px solid var(--line);
+    }
+
+    .metric-number {
+      display: block;
+      color: var(--forest);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.15rem;
+      margin-bottom: 2px;
+    }
+
+    .metric-label {
+      color: var(--text-soft);
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .hero-quote {
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(79,117,97,0.08);
+      border: 1px solid rgba(79,117,97,0.10);
+    }
+
+    .hero-quote p {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .hero-quote small {
+      color: var(--text-soft);
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .catalog-shell,
+    .contact-shell {
+      border-radius: 24px;
+      padding: 18px 14px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(246,241,234,0.82));
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .filter-btn {
+      min-height: 40px;
+      border-radius: 999px;
+      border: 1px solid rgba(62,51,44,0.08);
+      background: rgba(255,255,255,0.92);
+      color: var(--text-soft);
+      font-family: "Manrope", sans-serif;
+      font-size: 0.86rem;
+      font-weight: 800;
+      padding: 8px 14px;
+      cursor: pointer;
+    }
+
+    .filter-btn.active {
+      background: linear-gradient(135deg, var(--accent), #de8662);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    #resultsInfo {
+      text-align: center;
+      color: var(--text-soft);
+      font-weight: 800;
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+    }
+
+    .product-grid,
+    .faq-grid,
+    .contact-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .product-card,
+    .faq-card,
+    .contact-card {
+      border-radius: 18px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(62,51,44,0.06);
+      box-shadow: var(--shadow);
+    }
+
+    .product-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-media {
+      height: 170px;
+      background:
+        radial-gradient(circle at top, rgba(201,111,78,0.08), transparent 45%),
+        linear-gradient(180deg, #fff, #f7f2ec);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+    }
+
+    .product-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .product-body {
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+    }
+
+    .product-badge {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(79,117,97,0.10);
+      color: var(--forest);
+      font-size: 0.74rem;
+      font-weight: 800;
+    }
+
+    .product-name {
+      font-size: 1rem;
+      line-height: 1.15;
+    }
+
+    .product-copy {
+      color: var(--text-soft);
+      font-size: 0.88rem;
+    }
+
+    .product-meta {
+      display: grid;
+      gap: 6px;
+    }
+
+    .product-meta p {
+      font-size: 0.84rem;
+      color: var(--text-soft);
+    }
+
+    .product-meta strong {
+      color: var(--text);
+    }
+
+    .product-price {
+      margin-top: auto;
+      padding-top: 6px;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.25rem;
+      color: var(--text);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 20px 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.95);
+      color: var(--text-soft);
+      font-weight: 800;
+    }
+
+    .faq-card,
+    .contact-card {
+      padding: 18px 16px;
+    }
+
+    .faq-card h3,
+    .contact-card h3 {
+      font-size: 0.98rem;
+      margin-bottom: 6px;
+    }
+
+    .faq-card p,
+    .contact-card p,
+    .contact-card a {
+      color: var(--text-soft);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .contact-card {
+      text-align: center;
+    }
+
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      margin: 0 auto 10px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(201,111,78,0.10), rgba(79,117,97,0.12));
+      font-size: 1.15rem;
+    }
+
+    footer {
+      padding: 28px 0 36px;
+    }
+
+    .footer-box {
+      text-align: center;
+      border-radius: 24px;
+      padding: 24px 18px;
+      background: linear-gradient(180deg, rgba(43,36,31,0.96), rgba(61,50,42,0.92));
+      color: rgba(255,255,255,0.90);
+    }
+
+    .footer-brand {
+      display: inline-block;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.35rem;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .footer-brand span { color: #f0b08a; }
+
+    .footer-box p {
+      font-size: 0.88rem;
+      margin-top: 5px;
+    }
+
+    .footer-link {
+      color: #fff;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .chat-toggle {
+      position: fixed;
+      right: 14px;
+      bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+      width: 54px;
+      height: 54px;
+      border: none;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent), #de8662);
+      color: #fff;
+      font-size: 21px;
+      cursor: pointer;
+      z-index: 999;
+      box-shadow: 0 12px 28px rgba(201,111,78,0.28);
+    }
+
+    .chat-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(43,36,31,0.34);
+      z-index: 998;
+      display: none;
+    }
+
+    .chat-overlay.open { display: block; }
+
+    .chat-window {
+      position: fixed;
+      right: 12px;
+      left: 12px;
+      bottom: calc(78px + env(safe-area-inset-bottom, 0px));
+      max-width: 360px;
+      margin-left: auto;
+      background: rgba(255,255,255,0.98);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 22px 60px rgba(35,24,16,0.20);
+      border: 1px solid rgba(74,58,48,0.08);
+      display: none;
+      flex-direction: column;
+      z-index: 999;
+    }
+
+    .chat-window.open { display: flex; }
+
+    .chat-header {
+      background: linear-gradient(135deg, var(--text), #4a3b31);
+      color: #fff;
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .chat-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(240,176,138,0.18);
+      display: grid;
+      place-items: center;
+      font-size: 16px;
+    }
+
+    .chat-header h4 {
+      font-size: 0.96rem;
+      font-family: "Space Grotesk", sans-serif;
+    }
+
+    .chat-close {
+      margin-left: auto;
+      min-width: 32px;
+      min-height: 32px;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .chat-messages {
+      overflow-y: auto;
+      flex: 1;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      background: linear-gradient(180deg, #fff, #faf6f1);
+    }
+
+    .msg {
+      max-width: 88%;
+      padding: 10px 12px;
+      border-radius: 14px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .msg.bot {
+      align-self: flex-start;
+      background: #f4ede6;
+      color: var(--text);
+      border-bottom-left-radius: 6px;
+    }
+
+    .msg.user {
+      align-self: flex-end;
+      background: linear-gradient(135deg, var(--accent), #de8662);
+      color: #fff;
+      border-bottom-right-radius: 6px;
+    }
+
+    .chat-options {
+      padding: 12px;
+      display: grid;
+      gap: 8px;
+      border-top: 1px solid rgba(74,58,48,0.08);
+      background: #fff;
+    }
+
+    .chat-option {
+      border: none;
+      border-radius: 999px;
+      padding: 10px 12px;
+      background: #f4ede6;
+      color: var(--text);
+      text-align: left;
+      font-size: 0.84rem;
+      font-weight: 800;
+      font-family: "Manrope", sans-serif;
+      cursor: pointer;
+      min-height: 42px;
+    }
+
+    .chat-direct-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: var(--wa);
+      color: #fff !important;
+      font-weight: 800;
+      font-size: 0.84rem;
+    }
+
+    @media (min-width: 760px) {
+      :root { --anchor-offset: 100px; }
+
+      .hero-actions { flex-direction: row; flex-wrap: wrap; }
+      .faq-grid, .contact-grid { grid-template-columns: repeat(2, 1fr); }
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      .chat-window { right: 16px; left: auto; width: calc(100vw - 32px); }
+    }
+
+    @media (min-width: 1040px) {
+      .hero-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .faq-grid,
+      .contact-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 759px) {
+      :root { --anchor-offset: 132px; }
+
+      .nav {
+        border-radius: 24px;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .menu {
+        justify-content: center;
+      }
+
+      .menu-cta {
+        width: 100%;
+      }
+
+      .hero-side {
+        padding: 18px 16px;
+      }
+
+      .metric {
+        padding: 12px;
+      }
+
+      .product-media {
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="nav-shell container">
+    <header class="nav glass">
+      <div class="logo">
+        <img src="image/logo-neuro-play.png" alt="Neuro Play logo" fetchpriority="high" decoding="async" />
+        <div class="brand">Neuro <span>Play</span></div>
+      </div>
+
+      <nav aria-label="Menú principal">
+        <ul class="menu">
+          <li><a href="#catalogo">Catálogo</a></li>
+          <li><a href="#preguntas">Preguntas</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <a
+        class="menu-cta"
+        href="https://wa.me/5491127325400?text=Hola%2C%20quiero%20asesoramiento%20para%20elegir%20un%20producto%20seg%C3%BAn%20la%20edad%20y%20la%20necesidad%20del%20ni%C3%B1o"
+        target="_blank"
+        rel="noopener noreferrer"
+      >WhatsApp</a>
+    </header>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-panel glass">
+          <div class="hero-copy">
+            <div class="eyebrow">Productos con sentido</div>
+            <h1>
+              Elegir mejor
+              <span>también es acompañar</span>
+            </h1>
+            <p>
+              Seleccionamos juegos y propuestas que acompañan atención, memoria,
+              lenguaje y desarrollo, con una mirada clara y cercana.
+            </p>
+
+            <ul class="hero-points">
+              <li><span>1</span><div>Productos pensados para aportar valor real.</div></li>
+              <li><span>2</span><div>Asesoramiento personalizado para cada familia.</div></li>
+              <li><span>3</span><div>Regalos útiles, lindos y con propósito.</div></li>
+            </ul>
+
+            <div class="hero-actions">
+              <a class="btn btn-secondary" href="#catalogo">Ver catálogo</a>
+              <a
+                class="btn btn-wa"
+                href="https://wa.me/5491127325400?text=Hola%2C%20quiero%20que%20me%20ayuden%20a%20elegir%20un%20producto%20con%20sentido"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Hablar por WhatsApp</a>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-side glass">
+          <div>
+            <div class="eyebrow">Acompañamiento</div>
+            <h2 class="hero-card-title">Una compra más clara</h2>
+            <p class="hero-card-copy">
+              Te ayudamos a encontrar una propuesta acorde a la edad, la necesidad y el objetivo.
+            </p>
+          </div>
+
+          <div class="metrics">
+            <div class="metric">
+              <span class="metric-number">1 a 1</span>
+              <span class="metric-label">Asesoramiento</span>
+            </div>
+            <div class="metric">
+              <span class="metric-number">+ valor</span>
+              <span class="metric-label">Regalos con sentido</span>
+            </div>
+            <div class="metric">
+              <span class="metric-number">Simple</span>
+              <span class="metric-label">Compra por WhatsApp</span>
+            </div>
+            <div class="metric">
+              <span class="metric-number">Real</span>
+              <span class="metric-label">Selección con criterio</span>
+            </div>
+          </div>
+
+          <div class="hero-quote">
+            <p>“Me ayudaron a elegir algo útil, lindo y adecuado para la edad.”</p>
+            <small>Familia Neuro Play</small>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section catalog" id="catalogo">
+      <div class="container">
+        <div class="section-head">
+          <h2>Catálogo</h2>
+          <p>Propuestas pensadas para jugar y acompañar el aprendizaje.</p>
+        </div>
+
+        <div class="catalog-shell glass">
+          <div class="filters" id="filters" aria-label="Filtrar productos por habilidad">
+            <button class="filter-btn active" type="button" data-filter="todos" aria-pressed="true">Todos</button>
+            <button class="filter-btn" type="button" data-filter="memoria" aria-pressed="false">Memoria</button>
+            <button class="filter-btn" type="button" data-filter="atencion" aria-pressed="false">Atención</button>
+            <button class="filter-btn" type="button" data-filter="lenguaje" aria-pressed="false">Lenguaje</button>
+            <button class="filter-btn" type="button" data-filter="motricidad" aria-pressed="false">Motricidad</button>
+            <button class="filter-btn" type="button" data-filter="logica" aria-pressed="false">Lógica</button>
+          </div>
+
+          <p id="resultsInfo"></p>
+          <div class="product-grid" id="productsGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq" id="preguntas">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Preguntas frecuentes</div>
+        </div>
+
+        <div class="faq-grid">
+          <article class="faq-card">
+            <h3>¿Cómo elijo?</h3>
+            <p>Podés escribirnos y te ayudamos según edad, necesidad y objetivo.</p>
+          </article>
+          <article class="faq-card">
+            <h3>¿Asesoran antes de comprar?</h3>
+            <p>Sí. La idea es acompañarte para que elijas con más claridad.</p>
+          </article>
+          <article class="faq-card">
+            <h3>¿Sirven para regalo?</h3>
+            <p>Sí. También trabajamos opciones para regalar con sentido.</p>
+          </article>
+          <article class="faq-card">
+            <h3>¿Qué habilidades acompañan?</h3>
+            <p>Atención, memoria, lenguaje, motricidad, lógica y planificación.</p>
+          </article>
+          <article class="faq-card">
+            <h3>¿Cómo se paga?</h3>
+            <p>Transferencia, Mercado Pago o efectivo, según coordinación.</p>
+          </article>
+          <article class="faq-card">
+            <h3>¿Dónde están?</h3>
+            <p>Villa Maipú, San Martín, Buenos Aires.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contacto">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Contacto</div>
+          <h2>Estamos para ayudarte</h2>
+        </div>
+
+        <div class="contact-shell glass">
+          <div class="contact-grid">
+            <article class="contact-card">
+              <div class="contact-icon">💬</div>
+              <h3>WhatsApp</h3>
+              <p>
+                <a
+                  href="https://wa.me/5491127325400?text=Hola%2C%20quiero%20asesoramiento%20para%20elegir%20un%20producto"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >11 2732-5400</a>
+              </p>
+            </article>
+
+            <article class="contact-card">
+              <div class="contact-icon">📧</div>
+              <h3>Email</h3>
+              <p><a href="mailto:neuroplay.ar@gmail.com">neuroplay.ar@gmail.com</a></p>
+            </article>
+
+            <article class="contact-card">
+              <div class="contact-icon">📍</div>
+              <h3>Ubicación</h3>
+              <p>Villa Maipú, San Martín<br />Buenos Aires, Argentina</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-box">
+        <div class="footer-brand">Neuro <span>Play</span></div>
+        <p>Productos con sentido para acompañar aprendizaje y desarrollo desde el juego.</p>
+        <p>Villa Maipú, San Martín - Buenos Aires</p>
+        <p>
+          <a class="footer-link" href="mailto:neuroplay.ar@gmail.com">neuroplay.ar@gmail.com</a>
+          -
+          <a
+            class="footer-link"
+            href="https://wa.me/5491127325400?text=Hola%2C%20quiero%20hacer%20una%20consulta"
+            target="_blank"
+            rel="noopener noreferrer"
+          >11 2732-5400</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <button
+    aria-controls="chatWindow"
+    aria-expanded="false"
+    aria-haspopup="dialog"
+    aria-label="Abrir ayuda por WhatsApp y chat"
+    class="chat-toggle"
+    id="chatToggleBtn"
+    type="button"
+  >💬</button>
+
+  <div class="chat-overlay" hidden id="chatOverlay"></div>
+
+  <div
+    aria-hidden="true"
+    aria-label="Ayuda Neuro Play"
+    aria-modal="true"
+    class="chat-window"
+    id="chatWindow"
+    role="dialog"
+    tabindex="-1"
+  >
+    <div class="chat-header">
+      <div aria-hidden="true" class="chat-avatar">✨</div>
+      <div><h4>Neuro Play</h4></div>
+      <button aria-label="Cerrar chat" class="chat-close" id="chatCloseBtn" type="button">✕</button>
+    </div>
+
+    <div aria-live="polite" class="chat-messages" id="chatMessages">
+      <div class="msg bot">Hola. Si querés, te ayudamos a elegir un producto con sentido según la edad y la necesidad.</div>
+    </div>
+
+    <div class="chat-options">
+      <button class="chat-option" data-chat-action="atencion" type="button">🧠 Busco algo para atención</button>
+      <button class="chat-option" data-chat-action="memoria" type="button">🧩 Quiero trabajar memoria</button>
+      <button class="chat-option" data-chat-action="regalo" type="button">🎁 Busco un regalo con sentido</button>
+      <button class="chat-option" data-chat-action="ayuda" type="button">💬 Quiero asesoramiento</button>
+      <a
+        class="chat-direct-link"
+        href="https://wa.me/5491127325400?text=Hola%2C%20quiero%20asesoramiento%20para%20elegir%20un%20producto"
+        target="_blank"
+        rel="noopener noreferrer"
+      >Ir a WhatsApp</a>
+    </div>
+  </div>
+
+  <script>
+    var WA = "5491127325400";
+    var activeFilter = "todos";
+
+    var productos = [
+      {
+        producto: "Penguin Trap",
+        descripcion: "Juego de equilibrio y precisión.",
+        habilidades: "Motricidad fina, atención",
+        edad: "4+",
+        precio: 15900,
+        image: "JYF-penguin-trap.webp",
+        badge: "Atención",
+        categorias: ["atencion", "motricidad"]
+      },
+      {
+        producto: "Happy Astronauts",
+        descripcion: "Juego de equilibrio.",
+        habilidades: "Coordinación, planificación",
+        edad: "4+",
+        precio: 16900,
+        image: "JYF-Happy-Astronauts.webp",
+        badge: "Coordinación",
+        categorias: ["motricidad"]
+      },
+      {
+        producto: "Laberinto bolitas",
+        descripcion: "Juego de recorrido y lógica.",
+        habilidades: "Lógica, paciencia",
+        edad: "5+",
+        precio: 14900,
+        image: "JYF-Laberinto-bolitas-50-pcs.webp",
+        badge: "Lógica",
+        categorias: ["logica", "motricidad"]
+      },
+      {
+        producto: "Memory Game Pocket",
+        descripcion: "Juego de memoria portátil.",
+        habilidades: "Memoria, atención",
+        edad: "4+",
+        precio: 11900,
+        image: "JYF-Memory-Game-Pocket.webp",
+        badge: "Memoria",
+        categorias: ["memoria", "atencion"]
+      },
+      {
+        producto: "Bounce Biscuit",
+        descripcion: "Juego de precisión.",
+        habilidades: "Coordinación, control",
+        edad: "4+",
+        precio: 11000,
+        image: "JYF-Bounce-Biscuit-Sticks.webp",
+        badge: "Precisión",
+        categorias: ["motricidad", "atencion"]
+      },
+      {
+        producto: "Balls Draw Lots",
+        descripcion: "Juego de estrategia.",
+        habilidades: "Estrategia, atención",
+        edad: "4+",
+        precio: 7900,
+        image: "JYF-Balls-Draw-Lots.webp",
+        badge: "Estrategia",
+        categorias: ["atencion", "logica"]
+      },
+      {
+        producto: "Martillo sapo",
+        descripcion: "Juego motriz interactivo.",
+        habilidades: "Motricidad, reflejos",
+        edad: "3+",
+        precio: 25000,
+        image: "JYF-Juego-martillo-sapo.webp",
+        badge: "Motricidad",
+        categorias: ["motricidad"]
+      },
+      {
+        producto: "Letras Implas",
+        descripcion: "Juego de alfabetización.",
+        habilidades: "Lenguaje, lectoescritura",
+        edad: "5+",
+        precio: 19900,
+        image: "IMPLAS-jugando-con-letras.webp",
+        badge: "Lectoescritura",
+        categorias: ["lenguaje"]
+      },
+      {
+        producto: "Casita robada",
+        descripcion: "Juego de cartas.",
+        habilidades: "Memoria, planificación",
+        edad: "4+",
+        precio: 4900,
+        image: "BONTUS-Casita-robada.webp",
+        badge: "Memoria",
+        categorias: ["memoria", "logica"]
+      },
+      {
+        producto: "Animales escondidos",
+        descripcion: "Juego de observación.",
+        habilidades: "Atención, percepción",
+        edad: "4+",
+        precio: 4900,
+        image: "BONTUS-Animales-escondidos.webp",
+        badge: "Observación",
+        categorias: ["atencion"]
+      },
+      {
+        producto: "Barco pirata",
+        descripcion: "Juego de equilibrio.",
+        habilidades: "Equilibrio, paciencia",
+        edad: "4+",
+        precio: 19900,
+        image: "JYF-Barco-pirata.webp",
+        badge: "Equilibrio",
+        categorias: ["motricidad"]
+      },
+      {
+        producto: "Who is it",
+        descripcion: "Juego de preguntas.",
+        habilidades: "Lenguaje, lógica",
+        edad: "5+",
+        precio: 14900,
+        image: "JYF-Who-is-it.webp",
+        badge: "Lenguaje",
+        categorias: ["lenguaje", "logica"]
+      },
+      {
+        producto: "Dinosaur Game",
+        descripcion: "Juego de acción.",
+        habilidades: "Motricidad, reflejos",
+        edad: "3+",
+        precio: 15900,
+        image: "JYF-Dinosaur-Game.webp",
+        badge: "Reflejos",
+        categorias: ["motricidad"]
+      }
+    ];
+
+    var etiquetas = {
+      atencion: "Busco algo para atención",
+      memoria: "Quiero trabajar memoria",
+      regalo: "Busco un regalo con sentido",
+      ayuda: "Quiero asesoramiento"
+    };
+
+    var chat = document.getElementById("chatWindow");
+    var chatBtn = document.getElementById("chatToggleBtn");
+    var chatOverlay = document.getElementById("chatOverlay");
+    var chatCloseBtn = document.getElementById("chatCloseBtn");
+    var productsGrid = document.getElementById("productsGrid");
+    var filtersContainer = document.getElementById("filters");
+    var lastFocusedElement = null;
+
+    function formatPrice(price) {
+      return "$" + price.toLocaleString("es-AR");
+    }
+
+    function getWhatsAppUrl(msg) {
+      return "https://wa.me/" + WA + "?text=" + encodeURIComponent(msg);
+    }
+
+    function getProductosFiltrados() {
+      if (activeFilter === "todos") return productos;
+      return productos.filter(function(producto) {
+        return producto.categorias.includes(activeFilter);
+      });
+    }
+
+    function updateResultsInfo(cantidad) {
+      var resultsInfo = document.getElementById("resultsInfo");
+      var nombresFiltros = {
+        todos: "todos",
+        memoria: "memoria",
+        atencion: "atención",
+        lenguaje: "lenguaje",
+        motricidad: "motricidad",
+        logica: "lógica"
+      };
+
+      resultsInfo.textContent =
+        activeFilter === "todos"
+          ? cantidad + " productos"
+          : cantidad + " productos de " + nombresFiltros[activeFilter];
+    }
+
+    function createMeta(label, value) {
+      var p = document.createElement("p");
+      var strong = document.createElement("strong");
+      strong.textContent = label + " ";
+      p.appendChild(strong);
+      p.appendChild(document.createTextNode(value));
+      return p;
+    }
+
+    function createProductCard(producto) {
+      var article = document.createElement("article");
+      article.className = "product-card";
+
+      var media = document.createElement("div");
+      media.className = "product-media";
+
+      var image = document.createElement("img");
+      image.src = "image/" + producto.image;
+      image.alt = producto.producto;
+      image.loading = "lazy";
+      image.decoding = "async";
+      media.appendChild(image);
+
+      var body = document.createElement("div");
+      body.className = "product-body";
+
+      var badge = document.createElement("span");
+      badge.className = "product-badge";
+      badge.textContent = producto.badge;
+
+      var title = document.createElement("h3");
+      title.className = "product-name";
+      title.textContent = producto.producto;
+
+      var copy = document.createElement("p");
+      copy.className = "product-copy";
+      copy.textContent = producto.descripcion;
+
+      var meta = document.createElement("div");
+      meta.className = "product-meta";
+      meta.appendChild(createMeta("Habilidades:", producto.habilidades));
+      meta.appendChild(createMeta("Edad:", producto.edad));
+
+      var price = document.createElement("div");
+      price.className = "product-price";
+      price.textContent = formatPrice(producto.precio);
+
+      body.appendChild(badge);
+      body.appendChild(title);
+      body.appendChild(copy);
+      body.appendChild(meta);
+      body.appendChild(price);
+
+      article.appendChild(media);
+      article.appendChild(body);
+
+      return article;
+    }
+
+    function renderProductos() {
+      var productosFiltrados = getProductosFiltrados();
+      productsGrid.innerHTML = "";
+      updateResultsInfo(productosFiltrados.length);
+
+      if (!productosFiltrados.length) {
+        var emptyState = document.createElement("div");
+        emptyState.className = "empty-state";
+        emptyState.textContent = "No encontramos productos para este filtro.";
+        productsGrid.appendChild(emptyState);
+        return;
+      }
+
+      productosFiltrados.forEach(function(producto) {
+        productsGrid.appendChild(createProductCard(producto));
+      });
+    }
+
+    function setActiveFilter(filter) {
+      activeFilter = filter;
+      filtersContainer.querySelectorAll(".filter-btn").forEach(function(btn) {
+        var isActive = btn.getAttribute("data-filter") === filter;
+        btn.classList.toggle("active", isActive);
+        btn.setAttribute("aria-pressed", isActive ? "true" : "false");
+      });
+      renderProductos();
+    }
+
+    function initFilters() {
+      filtersContainer.addEventListener("click", function(event) {
+        var button = event.target.closest(".filter-btn");
+        if (!button) return;
+        setActiveFilter(button.getAttribute("data-filter"));
+      });
+    }
+
+    function getFocusableElements() {
+      return chat.querySelectorAll('button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    }
+
+    function closeChat() {
+      chat.classList.remove("open");
+      chatOverlay.classList.remove("open");
+      chatOverlay.hidden = true;
+      chat.setAttribute("aria-hidden", "true");
+      chatBtn.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("chat-open");
+      if (lastFocusedElement) lastFocusedElement.focus();
+    }
+
+    function openChat() {
+      lastFocusedElement = document.activeElement;
+      chat.classList.add("open");
+      chatOverlay.hidden = false;
+      chatOverlay.classList.add("open");
+      chat.setAttribute("aria-hidden", "false");
+      chatBtn.setAttribute("aria-expanded", "true");
+      document.body.classList.add("chat-open");
+
+      var focusables = getFocusableElements();
+      if (focusables.length) focusables[0].focus();
+      else chat.focus();
+    }
+
+    function toggleChat() {
+      if (chat.classList.contains("open")) closeChat();
+      else openChat();
+    }
+
+    function agregarMensaje(texto, tipo, esHTML) {
+      var c = document.getElementById("chatMessages");
+      var d = document.createElement("div");
+      d.className = "msg " + (tipo || "bot");
+      if (esHTML) d.innerHTML = texto;
+      else d.textContent = texto;
+      c.appendChild(d);
+      c.scrollTop = c.scrollHeight;
+    }
+
+    function linkWA(msg, label) {
+      var url = getWhatsAppUrl(msg);
+      return '<a href="' + url + '" target="_blank" rel="noopener noreferrer" class="chat-direct-link">' + label + '</a>';
+    }
+
+    function botResponder(tipo) {
+      if (!etiquetas[tipo]) return;
+      agregarMensaje(etiquetas[tipo], "user");
+
+      setTimeout(function() {
+        if (tipo === "atencion") {
+          agregarMensaje("Podemos ayudarte a elegir opciones para atención y concentración.");
+          agregarMensaje(linkWA("Hola, estoy buscando un producto para trabajar atención y concentración.", "Quiero recomendación"), "bot", true);
+        }
+
+        if (tipo === "memoria") {
+          agregarMensaje("Tenemos propuestas para memoria y observación según la edad.");
+          agregarMensaje(linkWA("Hola, quiero elegir un producto para trabajar memoria.", "Ver opciones"), "bot", true);
+        }
+
+        if (tipo === "regalo") {
+          agregarMensaje("Te ayudamos a encontrar un regalo útil y con sentido.");
+          agregarMensaje(linkWA("Hola, estoy buscando un regalo con sentido según la edad.", "Pedir recomendación"), "bot", true);
+        }
+
+        if (tipo === "ayuda") {
+          agregarMensaje("Perfecto. Te acompañamos para elegir mejor.");
+          agregarMensaje(linkWA("Hola, quiero asesoramiento para elegir un producto con sentido.", "Abrir WhatsApp"), "bot", true);
+        }
+      }, 250);
+    }
+
+    function initChat() {
+      chatBtn.addEventListener("click", toggleChat);
+      chatCloseBtn.addEventListener("click", closeChat);
+      chatOverlay.addEventListener("click", closeChat);
+
+      document.querySelectorAll("[data-chat-action]").forEach(function(button) {
+        button.addEventListener("click", function() {
+          botResponder(button.getAttribute("data-chat-action"));
+        });
+      });
+
+      document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape" && chat.classList.contains("open")) closeChat();
+
+        if (event.key === "Tab" && chat.classList.contains("open")) {
+          var focusables = Array.prototype.slice.call(getFocusableElements());
+          if (!focusables.length) return;
+
+          var first = focusables[0];
+          var last = focusables[focusables.length - 1];
+
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+          }
+        }
+      });
+    }
+
+    initFilters();
+    initChat();
+    renderProductos();
+  </script>
+</body>
+</html>
